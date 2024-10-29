@@ -6,10 +6,20 @@
 
 ## Features
 
-- Display a list of countries with essential details.
-- View detailed information for each country.
-- Responsive design suitable for various devices.
-- Uses Vue Router for seamless navigation between pages.
+- See all countries from the API on the homepage.
+- Search for a country using an input field.
+- Filter countries by region.
+- Click on a country to see more detailed information on a separate page (client-side routing).
+- Clicking on border countries on the detail page should link the user to the detail of those countries.
+- **Project Bonuses** (except SSR, all features have been implemented) :
+  - Toggle the color scheme between light and dark mode without using any 3rd party libraries.
+  - Searching using the keywords "Germany" or "Grmny" should also work.
+  - Add sort functionality for both Population and Country Name.
+  - Make all content server-side rendered and also have a fallback if the server-side render faces an error.
+  - Ensure the ratio for the country flags is 4:3 or any other ratio you find suitable.
+  - Add unit tests for components.
+  - Store the filters in the URL query strings and sync it with the component filter object.
+  - Add lazy loading for country images and list.
 
 ## Technologies Used
 
@@ -88,6 +98,8 @@ Ensure you have a `vercel.json` file in the root directory with the following co
 ## Usage
 
 - Navigate to the homepage to view a list of countries.
+- Search for a specific country using the search bar.
+- Filter countries by region.
 - Click on any country to view detailed information about it.
 
 ## Contributing
