@@ -2,7 +2,9 @@
 <template>
   <div class="detail">
     <Header :theme="theme" @toggleTheme="toggleTheme" />
-    <button @click="goBack" class="back-button">⬅ Back</button>
+
+    <!-- Use the BackButton component here -->
+    <BackButton />
 
     <div v-if="country" class="country-details">
       <img :src="country.flag" :alt="country.name + ' flag'" class="flag" />
@@ -46,13 +48,13 @@
 
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import axios from "axios";
 import Header from "../components/Header.vue";
 import BorderCountries from "../components/BorderCountries.vue";
+import BackButton from "../components/BackButton.vue"; // Use JavaScript comment style
 
 const route = useRoute();
-const router = useRouter();
 const country = ref(null);
 const allCountries = ref([]);
 const theme = ref("light");
@@ -88,10 +90,6 @@ const toggleTheme = () => {
   theme.value = theme.value === "light" ? "dark" : "light";
   document.body.classList.toggle("dark-mode", theme.value === "dark");
 };
-
-const goBack = () => {
-  router.back();
-};
 </script>
 
 <style scoped>
@@ -104,20 +102,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-}
-
-.back-button {
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .country-details {
@@ -183,16 +167,7 @@ header {
   color: #ffffff;
 }
 
-.dark-mode .back-button {
-  background-color: #3c4d61;
-  color: #ffffff;
-  border-color: #3c4d61;
-}
-
-.dark-mode .info h2 {
-  color: #ffffff;
-}
-
+.dark-mode .info h2,
 .dark-mode .info p,
 .dark-mode .info p strong {
   color: #ffffff;
